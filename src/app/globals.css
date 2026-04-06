@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-inter);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(0.10 0.005 260);
+  --foreground: oklch(0.95 0.01 260);
+  --card: oklch(0.13 0.005 260);
+  --card-foreground: oklch(0.95 0.01 260);
+  --popover: oklch(0.14 0.005 260);
+  --popover-foreground: oklch(0.95 0.01 260);
+  --primary: oklch(0.78 0.15 195);
+  --primary-foreground: oklch(0.10 0.005 260);
+  --secondary: oklch(0.20 0.01 260);
+  --secondary-foreground: oklch(0.90 0.01 260);
+  --muted: oklch(0.18 0.008 260);
+  --muted-foreground: oklch(0.55 0.02 260);
+  --accent: oklch(0.20 0.01 260);
+  --accent-foreground: oklch(0.90 0.01 260);
+  --destructive: oklch(0.60 0.20 25);
+  --border: oklch(0.22 0.008 260);
+  --input: oklch(0.22 0.008 260);
+  --ring: oklch(0.65 0.15 195);
+  --chart-1: oklch(0.78 0.15 195);
+  --chart-2: oklch(0.75 0.15 85);
+  --chart-3: oklch(0.65 0.18 145);
+  --chart-4: oklch(0.65 0.15 330);
+  --chart-5: oklch(0.60 0.12 260);
+  --radius: 0.375rem;
+  --sidebar: oklch(0.11 0.005 260);
+  --sidebar-foreground: oklch(0.90 0.01 260);
+  --sidebar-primary: oklch(0.78 0.15 195);
+  --sidebar-primary-foreground: oklch(0.95 0.01 260);
+  --sidebar-accent: oklch(0.18 0.008 260);
+  --sidebar-accent-foreground: oklch(0.90 0.01 260);
+  --sidebar-border: oklch(0.22 0.008 260);
+  --sidebar-ring: oklch(0.65 0.15 195);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── React Flow: seamless schematic overrides ── */
+
+.react-flow__attribution {
+  display: none !important;
+}
+
+.react-flow__node {
+  z-index: 2 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.react-flow__node.selected {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep edges under nodes so component labels and meter readouts stay visible above wires. */
+.react-flow__edges {
+  z-index: 1 !important;
+}
+
+.react-flow__handle {
+  width: 18px !important;
+  height: 18px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 50% !important;
+  z-index: 20 !important;
+}
+
+.react-flow__handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid #22d3ee;
+  background: #0a0a0f;
+  box-shadow: 0 0 4px rgba(34, 211, 238, 0.25);
+  transition: all 0.15s ease;
+  pointer-events: none;
+}
+
+.react-flow__handle:hover::after {
+  width: 10px;
+  height: 10px;
+  background: #22d3ee;
+  border-color: #67e8f9;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.react-flow__edge {
+  cursor: pointer;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 2.5;
+}
+
+.react-flow__selection {
+  background: rgba(34, 211, 238, 0.05) !important;
+  border: 1px solid rgba(34, 211, 238, 0.3) !important;
+  border-radius: 2px;
+}
+
+.react-flow__nodesselection-rect {
+  background: rgba(34, 211, 238, 0.04) !important;
+  border: 1px dashed rgba(34, 211, 238, 0.3) !important;
+}
